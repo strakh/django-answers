@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Envi&aacute; tu pregunta</h1>
+<form class="alone" method="post" action="">
+	{{ form.as_p }}
+	<input class="submit" type="submit" name="enviar" value="enviar"/>
+</form>
+{% endblock %}

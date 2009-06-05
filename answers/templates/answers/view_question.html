@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load answers_filters %}
+
+{% block content %}
+<a class="back-to-listing" href="{% url index %}">&lt;&lt; Volver al listado</a>
+<div class="question">
+	<h2>{{ question.title}}</h2>
+	<p class="body">{{ question.body|linebreaksbr }}</p>
+	<p class="tags"><span class="label">Tags:</span>{{ question.tags }}</p>
+	<p class="author-time">creada por {{ question.user.username }} a las
+		{{ question.created|date:"h:i"}} del {{ question.created|date:"d M y" }},
+		ultima actividad {{ question.last_modified|date:"d M y" }} a las {{ question.last_modified|date:"h:i" }}.
+	</p>
+</div>
+<div class="object-list">
+{% if answers %}
+	<h3>Respuestas ({{ answers|length }}, ordenadas por puntaje):</h3>
+	<ul>
+	{% for a in answers %}
+		<li>
+			<p class="body">
+			{{ a.body }}
+			</p>
+			{% if a.points %}
+				<p class="points">{{ a.votes }} voto{{ a.votes|pluralize }}, sumando {{ a.points }} punto{{ a.points|pluralize }}.</p>
+			{% endif %}
+			<p class="author-time">escrito por
+				{% if a.user %}
+					{{ a.user.username }}
+				{% else %}
+					An&oacute;nimo (desde {{ a.ip }})
+				{% endif %}
+				a las {{ a.created|date:"h:i"}}
+			del {{ a.created|date:"d M y" }}</p>
+			{% if user.is_authenticated %}
+				<div class="actions">
+				{% if not a|in:voted %}
+					<form method="post" action="{% url vote_answer a.id %}">
+						{{ vote_form.value.label_tag }}{{ vote_form.value }}
+						<input type="submit" name="votar" value="votar" />
+					</form>
+				{% endif %}
+				{% if not a|in:reported %}
+					<form method="post" action="{% url report_answer a.id %}">
+						<input onclick="return confirm('Seguro que queres reportar esta respuesta?')" type="submit" name="reportar" value="reportar" />
+					</form>
+				{% endif %}
+				</div>
+			{% endif %}
+		</li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>Parece que nadie se anima a responder todavia, tenes una buena respuesta a esta pregunta?</p>
+{% endif %}
+</div>
+
+<form method="post" action="{% url answer_question question.id %}">
+	<h3>Responde a esta pregunta</h3>
+	{{ form.as_p }}
+	<input class="submit" type="submit" name="responder" value="responder"/>
+</form>
+{% endblock %}

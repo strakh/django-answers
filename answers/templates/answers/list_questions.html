@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="object-list">
+	<ul>
+	{% for q in questions %}
+		<li>
+			<p class="title">{{ q.title }} <a href="{% url view_question q.id %}">Ver respuestas.</a></p>
+			<p class="body">{{ q.body }}</p>
+			<p class="author-time">creada por {{ q.user.username }} a las
+				{{ q.created|date:"h:i"}} del {{ q.created|date:"d M y" }},
+				ultima actividad {{ q.last_modified|date:"d M y" }} a las {{ q.last_modified|date:"h:i" }}.
+			</p>
+		</li>
+	{% endfor %}
+	</div>
+</ul>
+
+{% if user.is_authenticated %} 
+<form method="post" action="{% url add_question %}">
+	<h2>Hac&eacute; tu pregunta</h2>
+	{{ form.as_p }}
+	<input class="submit" type="submit" name="enviar" value="enviar"/>
+</form>
+{% else %}
+<div class="help">
+<p>Vos podrias hacer preguntas, pero para eso tenes que <a href="{% url login %}">ingresar</a> con tu usuario y contraseña.</p>
+<p>Todavia no ten&eacute;s usuario y contraseña? <a href="{% url register %}">hace click aca.</a></p>
+</div>
+{% endif %}
+
+{% endblock %}

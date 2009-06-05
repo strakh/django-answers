@@ -1,0 +1,29 @@
+html, body, form, fieldset, input, textarea {
+	margin: 0;
+	padding: 0;
+	font: 100%/1.5 "Helvetica Neue", Arial, Tahoma, "Lucida Grande", "FreeSans", "Mukti Narrow", Helvetica, sans-serif;
+}
+h1, h2, h3, h4, h5, h6, p, pre,
+blockquote, ul, ol, dl, address {
+	margin: 1em 0;
+	padding: 0;
+}
+h1 {font-size: 2.2em}
+h2 {font-size: 1.8em}
+h3 {font-size: 1.5em}
+h4 {font-size: 1.3em}
+h5 {font-size: 1.15em}
+h6 {font-size: 1em;}
+li, dd, blockquote {margin-left: 2em}
+dt {font-weight: bold}
+input, select {font-size: 100%}
+form label, button,
+input[type="button"], input[type="submit"], input[type="reset"] {cursor: pointer}
+abbr, acronym {border:none}
+abbr[title], acronym[title] {
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	cursor: help;
+}
+/* bypass monospace browser special settings */
+textarea, tt {font: 100% "Helvetica Neue", Arial, Tahoma, "Lucida Grande", "Bitstream Vera Sans", Helvetica, sans-serif}

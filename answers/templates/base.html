@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Dialectica Liberal</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    {% block css %}
+        <link href="{{ SETTINGS.MEDIA_URL }}css/initial.css" rel="stylesheet" type="text/css" />
+    	<style class="text/css">
+    		h1, h2, h3 {
+    			margin: 0;
+    			padding: 0;
+    		}
+    		body {
+				font-family:helvetica;
+    		}
+    		div#header {
+    			background:#34415E none repeat scroll 0 0;
+				color:white;
+				margin-bottom:5px;
+				padding:10px;
+				position:relative;
+    		}
+    		div#header p.current-user{
+    			bottom:5px;
+				margin:0;
+				position:absolute;
+				right:10px;
+    		}
+    		div#header h1 {
+    			margin: 0;
+    			font-size: 70px;
+    			line-height: 70px;
+    		}
+    		div#header h1 a {
+    			color: white;
+    			text-decoration: none;
+    		}
+    		
+    		div#header a {
+    			color: white;
+    		}
+    		div#header a:hover {
+    			font-weight: bold;
+    		}
+    		div#content {
+    			background: #E2E9FF;
+    			padding: 10px;
+    		}
+    		
+    		div.object-list p, div.object-list ul{
+    			margin: 0;
+    			padding: 0;
+    		}
+    		div.object-list ul {
+    		}
+    		div.object-list li {
+				background:#FAFFC8 none repeat scroll 0 0;
+				border-top:5px solid #FFF100;
+				list-style-image:none;
+				list-style-position:outside;
+				list-style-type:none;
+				margin:10px;
+				padding:10px;
+    		}
+    		p.title {
+    			font-size:30px;
+				font-weight:bold;
+    		}
+    		p.title a {
+    			font-size:15px;
+				font-weight:normal;
+				padding:0 10px;
+    		}
+    		p.author-time {
+		    	color:#999;
+				font-size:12px;
+				text-align:right;
+    		}
+    		
+    		div#footer {
+    			background:#34415E none repeat scroll 0 0;
+				color:white;
+				font-size:12px;
+				margin-top:5px;
+				padding:10px;
+				text-align:center;
+    		}
+    		
+    		/* forms */
+			form {
+				background-color:#FFE2F4;
+				border-top:10px solid #E738A4;
+				margin:50px 10px 0;
+				padding:5px;
+			}
+			form.alone{
+				margin-top: 10px;
+			}
+			form p {
+				margin: 5px 0;
+			}
+			#content form h2 {
+				margin: 0;
+			}
+			form p label {
+				display: block;
+				font-weight: bold;
+			}
+			form label.checkbox-label {
+				margin: 0 10px 0 0;
+				font-size: 11px;
+				font-weight: normal;
+				display: inline;
+			}
+			form span.errors {
+				color: #FF8C3A;
+				font-size: 10px;
+				margin: 0 10px;
+				text-transform: uppercase;
+			}
+			form span.helptext {
+				font-size: 11px;
+				margin: 0 5px;
+			}
+			form input.submit {
+				padding: 5px 10px;
+			}
+			form textarea {
+				height: 100px;
+				width: 500px;
+			}
+			    		
+			div.help {
+				background:#DDFEDF none repeat scroll 0 0;
+				border-top:5px solid #4FBC55;
+				margin-top: 10px;
+				margin-bottom:0;
+				margin-left:10px;
+				margin-right:10px;
+				padding:10px;
+			}
+			div.help p{
+				margin: 0;
+			}
+			
+			div.question {
+				background:#FFE9E8 none repeat scroll 0 0;
+				border-top:5px solid #D30900;
+				margin:10px;
+				padding:10px;
+			}
+			div.question p{
+				margin: 0;
+			}
+			div.question p.tags {
+				color:#777777;
+				text-align:right;
+				margin-top: 10px;
+			}
+			div.question p.tags span.label{
+				font-weight: bold;
+				font-size: 17px;
+				padding: 0 5px;
+				color: black;
+			}
+			
+			div.object-list p.points{
+				margin-top:20px;
+				text-align:right;
+			}
+			a.back-to-listing {
+				font-size:20px;
+				font-weight:bold;
+				padding:10px;
+			}
+			ul.errorlist {
+				margin: 20px 0 0;
+				padding: 0px;
+			}
+			ul.errorlist li{
+				color:red;
+				line-height:10px;
+				list-style-image:none;
+				list-style-position:outside;
+				list-style-type:none;
+				margin:0;
+				padding:0;
+			}
+			
+			/* actions */
+			div.actions{
+				font-size:14px;
+				margin:5px 0 0;
+				text-align:right;
+			}
+			div.actions form{
+				background: none;
+				border: none;
+				margin: 0;
+				display: inline;
+				padding-right:0 15px;
+			}
+    	</style>
+    {% endblock %}
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <h1><a href="{% url index %}">Dialectica Liberal</a></h1>
+            <p class="current-user">
+            {% if user.is_authenticated %}
+            	Hola {{ user.username }} ( <a href="{% url logout %}">Salir</a> )
+            {% else %}
+            	Hola extra&ntilde;o/a ( <a href="{% url login %}">Ingresar</a> )
+            {% endif %}
+            </p>
+        </div><!-- #header -->
+        <div id="content">
+        	{% if message %}
+        		<div class="message">{{ message }}</div>
+        	{% endif %}
+        	{% if ok_message %}
+        		<div class="message ok_message">{{ ok_message }}</div>
+        	{% endif %}
+        	{% if error_message %}
+        		<div class="message error_message">{{ error_message }}</div>
+        	{% endif %}
+            {% block content %}{% endblock %}
+        </div><!-- #content -->
+        <div id="footer">
+        	Dialectica liberal - Todos los derechos son mas que los izquierdos en una relacion 9/1.
+        </div><!-- #footer -->
+    </div><!-- #container -->
+</body>
+</html>

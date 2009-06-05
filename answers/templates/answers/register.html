@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Ingresa tus datos para registrarte</h2>
+<form class="alone" method="post" action="">
+	{{ form.as_p }}
+	<input class="submit" type="submit" name="Enviar" value="Enviar"/>
+</form>
+{% endblock %}

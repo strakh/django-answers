@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Respondiendo a "{{ question.title }}"</h1>
+<form class="alone" method="post" action="">
+	{{ form.as_p }}
+	<input class="submit" type="submit" name="responder" value="responder"/>
+</form>
+{% endblock %}

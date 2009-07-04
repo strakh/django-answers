@@ -22,12 +22,11 @@ class Question(models.Model):
         reports_count_sql = 'SELECT COUNT(*) FROM answers_report WHERE answers_report.answer_id = answers_answer.id'
         points_count_sql = 'SELECT SUM(value) FROM answers_vote WHERE answers_vote.answer_id = answers_answer.id'
         votes_count_sql = 'SELECT COUNT(*) FROM answers_vote WHERE answers_vote.answer_id = answers_answer.id'
-        return self.answer_set.all().order_by('-points')\
+        return  self.answer_set.all().order_by('-points')\
                     .extra(select = {'reports': reports_count_sql,
                                      'points': points_count_sql,
                                      'votes': votes_count_sql,},
-                           where = ['((reports >= 5 AND (points/reports) > 2) OR reports < 5 )'])
-                    
+                           where = ['1 HAVING ((reports >= 5 AND (points/reports) > 2) OR reports < 5 )'])    
                     
     def save(self):
         for t in self.tags.split(','):

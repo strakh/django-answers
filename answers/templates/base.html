@@ -5,6 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
+    {% block javascript %}
+		<script type="text/javascript" src="{{ SETTINGS.MEDIA_URL }}js/jquery-1.3.2.min.js"></script>
+    {% endblock %}
     {% block css %}
         <link href="{{ SETTINGS.MEDIA_URL }}css/initial.css" rel="stylesheet" type="text/css" />
     	<style class="text/css">

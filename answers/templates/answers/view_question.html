@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 {% load answers_filters %}
 
+{% block javascript %}
+	{{ block.super }}
+	<script type="text/javascript" src="{{ SETTINGS.MEDIA_URL }}js/wordcounter.js"></script>
+	<script type="text/javascript">		
+		$(function() {
+			$('textarea').wordCounter();
+		});
+	</script>
+{% endblock %}
+
 {% block content %}
 <a class="back-to-listing" href="{% url index %}">&lt;&lt; Volver al listado</a>
 <div class="question">

@@ -14,7 +14,13 @@ class QuestionForm(forms.ModelForm):
         model = Question
         exclude = ('created', 'user')
         
+class TextWithLength(forms.CharField):
+    def __init__(self, *args, **kargs):
+        kargs['widget'] = forms.Textarea(attrs={'class':'max-length-%s' % kargs['max_length']})
+        super(self.__class__, self).__init__(*args, **kargs)
+            
 class AnswerForm(forms.ModelForm):
+    body = TextWithLength(max_length=250)
     class Meta:
         model = Answer
         fields = ('body',)

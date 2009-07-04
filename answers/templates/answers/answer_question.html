@@ -1,5 +1,15 @@
 {% extends 'base.html' %}
 
+{% block javascript %}
+	{{ block.super }}
+	<script type="text/javascript" src="{{ SETTINGS.MEDIA_URL }}js/wordcounter.js"></script>
+	<script type="text/javascript">		
+		$(function() {
+			$('textarea').wordCounter();
+		});
+	</script>
+{% endblock %}
+
 {% block content %}
 <h1>Respondiendo a "{{ question.title }}"</h1>
 <form class="alone" method="post" action="">

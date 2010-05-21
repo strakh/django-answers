@@ -1,8 +1,9 @@
 {% extend "skeleton.tpl" %}
+{% load i18n %}
 
 {% block content %}
 <h1>Oooops</h1>
-<p>An internal server error ocurred while doing whatever it is you were doing,
+<p>{% trans 'An internal server error ocurred while doing whatever it is you were doing,
 you can hit the "back" button on your browser or try again later if it keeps happening.
-An automatic email error report has been sent to us, so you don't need to bother telling us about it :)</p>
+An automatic email error report has been sent to us, so you don't need to bother telling us about it :)' %}</p>
 {% endblock %}

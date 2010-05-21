@@ -1,6 +1,7 @@
 {% extend "skeleton.tpl" %}
+{% load i18n %}
 
 {% block content %}
-<h1>Oooops</h1>
-<p>The page you requested is not here anymore, bummer :(.</p>
+<h1>{% trans 'Oooops' %}</h1>
+<p>{% trans 'The page you requested is not here anymore, bummer :(.' %}</p>
 {% endblock %}

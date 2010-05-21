@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load answers_filters %}
+{% load answers_filters i18n %}
 
 {% block javascript %}
 	{{ block.super }}
@@ -12,19 +12,16 @@
 {% endblock %}
 
 {% block content %}
-<a class="back-to-listing" href="{% url index %}">&lt;&lt; Volver al listado</a>
+<a class="back-to-listing" href="{% url index %}">&lt;&lt; {% trans 'Volver al listado' %}</a>
 <div class="question">
 	<h2>{{ question.title}}</h2>
 	<p class="body">{{ question.body|linebreaksbr }}</p>
-	<p class="tags"><span class="label">Tags:</span>{{ question.tags }}</p>
-	<p class="author-time">creada por {{ question.user.username }} a las
-		{{ question.created|date:"h:i"}} del {{ question.created|date:"d M y" }},
-		ultima actividad {{ question.last_modified|date:"d M y" }} a las {{ question.last_modified|date:"h:i" }}.
-	</p>
+	<p class="tags"><span class="label">{% trans 'Tags' %}:</span>{{ question.tags }}</p>
+	<p class="author-time">{% blocktrans with question.user.username as q_username and question.created|date:"h:i" as q_created_time and question.created|date:"d M y" as q_create_date and question.last_modified|date:"d M y" as q_modified_date and question.last_modified|date:"h:i" as q_modified_time %}creada por {{ q_username }} a las {{ q_created_time }} del {{ q_create_date }}, ultima actividad {{ q_modified_date }} a las {{ q_modified_time }}.{% endblocktrans %}</p>
 </div>
 <div class="object-list">
 {% if answers %}
-	<h3>Respuestas ({{ answers|length }}, ordenadas por puntaje):</h3>
+	<h3>{% blocktrans with answers|length as answers_len %}Respuestas ({{ answers_len }}, ordenadas por puntaje){% endblocktrans %}:</h3>
 	<ul>
 	{% for a in answers %}
 		<li>
@@ -32,30 +29,28 @@
 			{{ a.body }}
 			</p>
 			{% if a.points_count %}
-				<p class="points">{{ a.votes_count }} voto{{ a.votes_count|pluralize }}, sumando {{ a.points_count }} punto{{ a.points_count|pluralize }}.</p>
+				<p class="points">{% blocktrans with a.votes_count as a_votes_count and a.votes_count|pluralize as a_votes_count_pl and a.points_count as a_points_count and a.points_count|pluralize as a_points_count_pl %}{{ a_votes_count }} voto{{ a_votes_count_pl }}, sumando {{ a_points_count }} punto{{ a_points_count_pl }}{% endblocktrans %}.</p>
 			{% endif %}
-			<p class="author-time">escrito por
+			<p class="author-time">{% trans 'escrito por' %}
 				{% if a.user %}
 					{{ a.user.username }}
 				{% else %}
-					An&oacute;nimo (desde {{ a.ip }})
+					{% blocktrans with a.ip as a_ip %}An&oacute;nimo (desde {{ a_ip }}){% endblocktrans %}
 				{% endif %}
-				a las {{ a.created|date:"h:i"}}
+				{% trans 'a las' %} {{ a.created|date:"h:i"}}
 			del {{ a.created|date:"d M y" }}</p>
 			{% if user.is_authenticated %}
 				<div class="actions">
 				{% if not a|in:voted %}
 					<form method="post" action="{% url vote_answer a.id %}">
 						{{ vote_form.value.label_tag }}{{ vote_form.value }}
-						<input type="submit" name="votar" value="votar" />
+						<input type="submit" name="votar" value="{% trans 'votar' %}" />
 					</form>
 				{% endif %}
 				{% if not a|in:reported %}
 					<form method="post" action="{% url report_answer a.id %}">
-						<input onclick="return confirm('Seguro que queres reportar esta respuesta?')" type="submit" name="reportar" value="reportar" />
+						<input onclick="return confirm('{% blocktrans %}Seguro que queres reportar esta respuesta?{% endblocktrans %}')" type="submit" name="reportar" value="{% trans 'reportar' %}" />
 					</form>
-				{% else %}
-				  {{ a.reports_count }} reports
 				{% endif %}
 				</div>
 			{% endif %}
@@ -63,13 +58,13 @@
 	{% endfor %}
 	</ul>
 {% else %}
-	<p>Parece que nadie se anima a responder todavia, tenes una buena respuesta a esta pregunta?</p>
+	<p>{% trans 'Parece que nadie se anima a responder todavia, tenes una buena respuesta a esta pregunta?' %}</p>
 {% endif %}
 </div>
 
 <form method="post" action="{% url answer_question question.id %}">
-	<h3>Responde a esta pregunta</h3>
+	<h3>{% trans 'Responde a esta pregunta' %}</h3>
 	{{ form.as_p }}
-	<input class="submit" type="submit" name="responder" value="responder"/>
+	<input class="submit" type="submit" name="responder" value="{% trans 'responder' %}"/>
 </form>
 {% endblock %}

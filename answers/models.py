@@ -2,14 +2,15 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
 from django.db.models import Count, Sum
+from django.utils.translation import ugettext_lazy as _
 
 class Profile(User):
     about = models.TextField()
 
 class Question(models.Model):
     user = models.ForeignKey(User, related_name='questions')
-    title = models.CharField("La pregunta en si", max_length=250)
-    body = models.TextField("Elabora un poco mas")
+    title = models.CharField(_("La pregunta en si"), max_length=250)
+    body = models.TextField(_("Elabora un poco mas"))
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now_add=True)
     tags = models.TextField()
@@ -48,7 +49,7 @@ class Answer(models.Model):
     question = models.ForeignKey(Question, related_name='answers')
     user = models.ForeignKey(User, null=True, related_name='answers')
     ip = models.IPAddressField()
-    body = models.TextField("Tu respuesta")
+    body = models.TextField(_("Tu respuesta"))
     created = models.DateTimeField(auto_now_add=True)
     
     def save(self):

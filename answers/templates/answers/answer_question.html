@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block javascript %}
 	{{ block.super }}
@@ -11,9 +12,9 @@
 {% endblock %}
 
 {% block content %}
-<h1>Respondiendo a "{{ question.title }}"</h1>
+<h1>{% blocktrans with question.title as q_title %}Respondiendo a "{{ q_title }}"{% endblocktrans %}</h1>
 <form class="alone" method="post" action="">
 	{{ form.as_p }}
-	<input class="submit" type="submit" name="responder" value="responder"/>
+	<input class="submit" type="submit" name="responder" value="{% trans 'responder' %}"/>
 </form>
 {% endblock %}

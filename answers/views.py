@@ -8,6 +8,7 @@ from forms import QuestionForm, AnswerForm, VoteForm, RegistrationForm
 from django import forms
 from django.utils.simplejson import dumps
 from woozp_utils.view import request_response, AjaxView
+from django.utils.translation import ugettext as _
 
 def index(request):
     params = {'questions': Question.objects.all().order_by('-last_modified'),
@@ -71,7 +72,7 @@ def vote_answer(request, answer_id):
     answer = get_object_or_404(Answer, id=answer_id)
     form = VoteForm(request.POST)
     if not form.is_valid():
-        return HttpResponseServerError("Were you playing with that form?")
+        return HttpResponseServerError(_("Were you playing with that form?"))
     
     Vote.objects.get_or_create(answer=answer, user=request.user,
                                defaults={'value':form.cleaned_data['value']})

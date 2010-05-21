@@ -1,0 +1,266 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-05-22 02:06+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: answers/forms.py:23
+msgid "Puntaje"
+msgstr ""
+
+#: answers/forms.py:34
+msgid "El password y la confirmacion son distintos."
+msgstr ""
+
+#: answers/models.py:12
+msgid "La pregunta en si"
+msgstr ""
+
+#: answers/models.py:13
+msgid "Elabora un poco mas"
+msgstr ""
+
+#: answers/models.py:52
+msgid "Tu respuesta"
+msgstr ""
+
+#: answers/views.py:75
+msgid "Were you playing with that form?"
+msgstr ""
+
+#: answers/templates/404.html:5
+msgid "Oooops"
+msgstr ""
+
+#: answers/templates/404.html:6
+msgid "The page you requested is not here anymore, bummer :(."
+msgstr ""
+
+#: answers/templates/base.html:215
+msgid "Dialectica Liberal"
+msgstr ""
+
+#: answers/templates/base.html:218
+msgid "Hola"
+msgstr ""
+
+#: answers/templates/base.html:218
+msgid "Salir"
+msgstr ""
+
+#: answers/templates/base.html:220
+msgid "Hola extra&ntilde;o/a"
+msgstr ""
+
+#: answers/templates/base.html:220
+msgid "Ingresar"
+msgstr ""
+
+#: answers/templates/base.html:237
+msgid ""
+"Dialectica liberal - Todos los derechos son mas que los izquierdos en una "
+"relacion 9/1."
+msgstr ""
+
+#: answers/templates/answers/add_question.html:5
+msgid "Envi&aacute; tu pregunta"
+msgstr ""
+
+#: answers/templates/answers/add_question.html:8
+#: answers/templates/answers/list_questions.html:22
+msgid "enviar"
+msgstr ""
+
+#: answers/templates/answers/answer_question.html:15
+#, python-format
+msgid "Respondiendo a \"%(q_title)s\""
+msgstr ""
+
+#: answers/templates/answers/answer_question.html:18
+#: answers/templates/answers/view_question.html:68
+msgid "responder"
+msgstr ""
+
+#: answers/templates/answers/list_questions.html:9
+msgid "Ver respuestas"
+msgstr ""
+
+#: answers/templates/answers/list_questions.html:11
+#: answers/templates/answers/view_question.html:20
+#, python-format
+msgid ""
+"creada por %(q_username)s a las %(q_created_time)s del %(q_create_date)s, "
+"ultima actividad %(q_modified_date)s a las %(q_modified_time)s."
+msgstr ""
+
+#: answers/templates/answers/list_questions.html:20
+msgid "Hac&eacute; tu pregunta"
+msgstr ""
+
+#: answers/templates/answers/list_questions.html:26
+#, python-format
+msgid ""
+"Vos podrias hacer preguntas, pero para eso tenes que <a href=\"%(login_url)s"
+"\">ingresar</a> con tu usuario y contraseña."
+msgstr ""
+
+#: answers/templates/answers/list_questions.html:27
+#, python-format
+msgid ""
+"Todavia no ten&eacute;s usuario y contraseña? <a href=\"%(reg_url)s\">hace "
+"click aca.</a>"
+msgstr ""
+
+#: answers/templates/answers/login.html:5
+msgid "Ingresa tus credenciales"
+msgstr ""
+
+#: answers/templates/answers/login.html:8
+msgid "Tu usuario y password no coinciden, intentalo otra vez"
+msgstr ""
+
+#: answers/templates/answers/login.html:23
+msgid "login"
+msgstr ""
+
+#: answers/templates/answers/login.html:27
+#, python-format
+msgid ""
+"Todavia no ten&eacute;s usuario y contraseña? <a href=\"%(reg_url)s\">hace "
+"click aca</a> para registrarte."
+msgstr ""
+
+#: answers/templates/answers/register.html:5
+msgid "Ingresa tus datos para registrarte"
+msgstr ""
+
+#: answers/templates/answers/register.html:8
+msgid "Enviar"
+msgstr ""
+
+#: answers/templates/answers/view_question.html:15
+msgid "Volver al listado"
+msgstr ""
+
+#: answers/templates/answers/view_question.html:19
+msgid "Tags"
+msgstr ""
+
+#: answers/templates/answers/view_question.html:24
+#, python-format
+msgid "Respuestas (%(answers_len)s, ordenadas por puntaje)"
+msgstr ""
+
+#: answers/templates/answers/view_question.html:32
+#, python-format
+msgid ""
+"%(a_votes_count)s voto%(a_votes_count_pl)s, sumando %(a_points_count)s punto%"
+"(a_points_count_pl)s"
+msgstr ""
+
+#: answers/templates/answers/view_question.html:34
+msgid "escrito por"
+msgstr ""
+
+#: answers/templates/answers/view_question.html:38
+#, python-format
+msgid "An&oacute;nimo (desde %(a_ip)s)"
+msgstr ""
+
+#: answers/templates/answers/view_question.html:40
+msgid "a las"
+msgstr ""
+
+#: answers/templates/answers/view_question.html:47
+msgid "votar"
+msgstr ""
+
+#: answers/templates/answers/view_question.html:52
+msgid "Seguro que queres reportar esta respuesta?"
+msgstr ""
+
+#: answers/templates/answers/view_question.html:52
+msgid "reportar"
+msgstr ""
+
+#: answers/templates/answers/view_question.html:61
+msgid ""
+"Parece que nadie se anima a responder todavia, tenes una buena respuesta a "
+"esta pregunta?"
+msgstr ""
+
+#: answers/templates/answers/view_question.html:66
+msgid "Responde a esta pregunta"
+msgstr ""
+
+#: woozp_utils/form.py:172 woozp_utils/form.py:187
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
+#: woozp_utils/recaptcha_forms.py:20
+msgid "Unknown error."
+msgstr ""
+
+#: woozp_utils/recaptcha_forms.py:21
+msgid "We weren't able to verify the public key. Please try again later."
+msgstr ""
+
+#: woozp_utils/recaptcha_forms.py:22
+msgid "We weren't able to verify the private key. Please try again later."
+msgstr ""
+
+#: woozp_utils/recaptcha_forms.py:23
+msgid "The challenge parameter of the verify script was incorrect."
+msgstr ""
+
+#: woozp_utils/recaptcha_forms.py:24
+msgid "The CAPTCHA solution was incorrect."
+msgstr ""
+
+#: woozp_utils/recaptcha_forms.py:25
+msgid ""
+"The parameters to /verify were incorrect, make sure you are passing all the "
+"required parameters.  Please try again later."
+msgstr ""
+
+#: woozp_utils/recaptcha_forms.py:26
+msgid ""
+"reCAPTCHA API keys are tied to a specific domain name for security reasons.  "
+"Please try again later."
+msgstr ""
+
+#: woozp_utils/recaptcha_forms.py:27
+msgid "Unable to contact the reCAPTCHA verify server.  Please try again later."
+msgstr ""
+
+#: woozp_utils/recaptcha_forms.py:63
+msgid "An error occured with the CAPTCHA service. Please try again."
+msgstr ""
+
+#: woozp_utils/recaptcha_forms.py:65
+msgid "Please enter the CAPTCHA solution."
+msgstr ""
+
+#: woozp_utils/recaptcha_forms.py:100
+msgid "Type the words."
+msgstr ""
+
+#: woozp_utils/recaptcha_forms.py:102
+msgid "DEBUG mode enabled, you can skip the captcha."
+msgstr ""
+
+#: woozp_utils/recaptcha_forms.py:104
+msgid "Are you human?"
+msgstr ""

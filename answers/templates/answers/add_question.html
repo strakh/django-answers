@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
-<h1>Envi&aacute; tu pregunta</h1>
+<h1>{% trans 'Envi&aacute; tu pregunta' %}</h1>
 <form class="alone" method="post" action="">
 	{{ form.as_p }}
-	<input class="submit" type="submit" name="enviar" value="enviar"/>
+	<input class="submit" type="submit" name="enviar" value="{% trans 'enviar' %}"/>
 </form>
 {% endblock %}

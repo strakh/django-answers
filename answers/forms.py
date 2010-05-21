@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.translation import ugettext as _
 from models import Question, Profile, Answer, Vote
 
 class QuestionForm(forms.ModelForm):
@@ -19,7 +20,7 @@ class AnswerForm(forms.ModelForm):
         fields = ('body',)
         
 class VoteForm(forms.ModelForm):
-    value = forms.ChoiceField(Vote.VALUES, label="Puntaje")
+    value = forms.ChoiceField(Vote.VALUES, label=_("Puntaje"))
     class Meta:
         model = Vote
         fields = ('value',)
@@ -30,7 +31,7 @@ class RegistrationForm(forms.ModelForm):
     
     def clean_password_confirm(self):
         if self.cleaned_data['password'] != self.cleaned_data['password_confirm']:
-            raise forms.ValidationError("El password y la confirmacion son distintos.")
+            raise forms.ValidationError(_("El password y la confirmacion son distintos."))
         return self.cleaned_data['password_confirm']
     
     class Meta:

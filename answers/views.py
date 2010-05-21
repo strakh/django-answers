@@ -48,8 +48,8 @@ def view_question(request, question_id):
               'form': AnswerForm(),
               'vote_form': VoteForm(),
               'answers': question.public_answers,
-              'voted': question.answer_set.filter(vote__user=request.user),
-              'reported': question.answer_set.filter(report__user=request.user),}
+              'voted': question.answers.filter(votes__user=request.user),
+              'reported': question.answers.filter(reports__user=request.user),}
     return request_response(request, 'answers/view_question.html', params)
 
 def answer_question(request, question_id):

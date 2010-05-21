@@ -34,11 +34,13 @@ register = user_passes_test(lambda x: not x.is_authenticated(), login_url="/")(R
 
 @login_required
 def add_question(request):
-    form = QuestionForm(request.POST)
-    if form.is_valid():
-        form.instance.user = request.user
-        form.save()
-        return HttpResponseRedirect(reverse('index'))
+    form = QuestionForm()
+    if request.method == 'POST':
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            form.instance.user = request.user
+            form.save()
+            return HttpResponseRedirect(reverse('index'))
     
     return request_response(request, 'answers/add_question.html', {'form':form})
     
@@ -55,14 +57,16 @@ def view_question(request, question_id):
 
 def answer_question(request, question_id):
     question = get_object_or_404(Question, id=question_id)
-    form = AnswerForm(request.POST)
-    if form.is_valid():
-        if request.user.is_authenticated():
-            form.instance.user = request.user
-        form.instance.question = question
-        form.instance.ip = request.META['REMOTE_ADDR']
-        form.save()
-        return HttpResponseRedirect(reverse('view_question', args=[question_id]))
+    form = AnswerForm()
+    if request.method == 'POST':
+        form = AnswerForm(request.POST)
+        if form.is_valid():
+            if request.user.is_authenticated():
+                form.instance.user = request.user
+            form.instance.question = question
+            form.instance.ip = request.META['REMOTE_ADDR']
+            form.save()
+            return HttpResponseRedirect(reverse('view_question', args=[question_id]))
 
     return request_response(request, 'answers/answer_question.html',
                             {'form': form, 'question': question})
